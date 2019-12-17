@@ -43,7 +43,7 @@ public class ClienteController {
         return clienteService.findAll(pageable);
     }
 
-    @Secured({"ROLE_USER","ROLE_ADMIN"})
+    //@Secured({"ROLE_USER","ROLE_ADMIN"})
     @GetMapping("/clientes/{id}")
     public ResponseEntity<?> show(@PathVariable Long id) {
 
@@ -66,6 +66,7 @@ public class ClienteController {
         return new ResponseEntity<Cliente>(cliente, HttpStatus.OK);
     }
 
+    //@Secured({"ROLE_USER","ROLE_ADMIN"})
     @PostMapping("/clientes")
     public ResponseEntity<?> create(@Valid @RequestBody Cliente cliente, BindingResult result) {
 
@@ -96,6 +97,7 @@ public class ClienteController {
         return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
     }
 
+    //@Secured({"ROLE_USER","ROLE_ADMIN"})
     @PutMapping("/clientes/{id}")
     public ResponseEntity<?> update(@Valid @RequestBody Cliente cliente, BindingResult result, @PathVariable Long id) {
 
