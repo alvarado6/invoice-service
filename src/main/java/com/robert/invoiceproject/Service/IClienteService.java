@@ -1,6 +1,7 @@
 package com.robert.invoiceproject.Service;
 
 import com.robert.invoiceproject.entity.Cliente;
+import com.robert.invoiceproject.entity.Producto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -17,5 +18,7 @@ public interface IClienteService {
     public Cliente save(Cliente cliente);
 
     public void delete(Long id);
+
+    public List<Producto> findByNameProducto(String name);
 
 }

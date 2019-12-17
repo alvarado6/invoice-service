@@ -1,7 +1,9 @@
 package com.robert.invoiceproject.Service;
 
 import com.robert.invoiceproject.entity.Cliente;
+import com.robert.invoiceproject.entity.Producto;
 import com.robert.invoiceproject.repository.ClienteRepository;
+import com.robert.invoiceproject.repository.IProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -15,6 +17,9 @@ public class ClienteServiceImpl implements IClienteService {
 
     @Autowired
     private ClienteRepository clienteRepository;
+
+    @Autowired
+    private IProductoRepository productoRepository;
 
     @Override
     @Transactional(readOnly = true)
@@ -44,6 +49,11 @@ public class ClienteServiceImpl implements IClienteService {
     @Transactional
     public void delete(Long id) {
         clienteRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Producto> findByNameProducto(String name) {
+        return productoRepository.findByNombreContainingIgnoreCase(name);
     }
 
 }

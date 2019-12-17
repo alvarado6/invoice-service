@@ -3,6 +3,7 @@ package com.robert.invoiceproject.controller;
 import com.robert.invoiceproject.Service.IClienteService;
 import com.robert.invoiceproject.Service.IUploadFileService;
 import com.robert.invoiceproject.entity.Cliente;
+import com.robert.invoiceproject.entity.Producto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.data.domain.Page;
@@ -194,5 +195,11 @@ public class ClienteController {
         }
 
         return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/facturas/filtrar-productos/{term}")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Producto> filtrarProductos(@PathVariable String term){
+        return clienteService.findByNameProducto(term);
     }
 }
